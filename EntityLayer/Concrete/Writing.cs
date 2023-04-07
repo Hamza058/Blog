@@ -13,5 +13,6 @@ namespace EntityLayer.Concrete
 		public string Content { get; set; }
 		public DateTime CreatedDate { get; set; }
 		public string Image { get; set; }
+		public bool Status { get; set; }
 	}
 }

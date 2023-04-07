@@ -20,7 +20,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Concrete\" />
+    <ProjectReference Include="..\DataAccessLayer\DataAccessLayer.csproj" />
+    <ProjectReference Include="..\EntityLayer\EntityLayer.csproj" />
   </ItemGroup>
 
 </Project>
