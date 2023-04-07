@@ -27,4 +27,10 @@
     <ProjectReference Include="..\EntityLayer\EntityLayer.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Views\Shared\Components\" />
+    <Folder Include="Views\Shared\ViewComponents\" />
+    <Folder Include="wwwroot\img\" />
+  </ItemGroup>
+
 </Project>
