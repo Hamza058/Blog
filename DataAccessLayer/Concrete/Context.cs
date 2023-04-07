@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using EntityLayer.Concrete;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +12,10 @@ namespace DataAccessLayer.Concrete
 	{
 		protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 		{
-			optionsBuilder.UseSqlServer("server=.\\SQLEXPRESS; database=DbBlog;integrated security=true;");//Eğer mysql kullanılacaksa admin role string yap.
+			optionsBuilder.UseSqlServer("server=.\\SQLEXPRESS; database=DbBlog;integrated security=true;");
 		}
+
+		public DbSet<Admin>? Admins { get; set; }
+		public DbSet<Writing>? Writings { get; set; }
 	}
 }
