@@ -1,0 +1,18 @@
+﻿@using EntityLayer.Concrete
+@model Admin
+
+@{
+    ViewData["Title"] = "EditAdmin";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Edit Admin Page</h1>
+<br />
+<form asp-action="EditAdmin" method="post">
+	<input type="hidden" asp-for="AdminId" value="@Model.AdminId" />
+	<input type="text" class="form-control mb-1" asp-for="AdminName" value="@Model.AdminName" />
+	<input type="text" class="form-control mb-1" asp-for="AdminPassword" value="@Model.AdminPassword" />
+	<input type="hidden" asp-for="AdminStatus" value="@Model.AdminStatus" />
+	<button type="submit" class="btn btn-success">Save</button>
+</form>
+

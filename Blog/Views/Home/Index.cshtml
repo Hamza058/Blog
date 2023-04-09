@@ -18,6 +18,7 @@
             <th>Admin Password</th>
             <th>Admin Status</th>
             <th></th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -39,6 +40,9 @@
                             <a asp-action="DeleteAdmin" asp-route-id="@item.AdminId" class="btn btn-success text-dark">Active</a>
                         }
                     }
+                </td>
+                <td>
+                    <a class='bx bx-edit' asp-action="EditAdmin" asp-route-id="@item.AdminId"></a>
                 </td>
             </tr>
         }

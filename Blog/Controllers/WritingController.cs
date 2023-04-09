@@ -10,11 +10,7 @@ namespace Blog.Controllers
     public class WritingController : Controller
     {
         WritingManager wm = new WritingManager(new EFWritingDal());
-		private readonly IFileProvider _fileProvider;
-		public WritingController(IFileProvider fileProvider)
-		{
-			_fileProvider = fileProvider;
-		}
+
 		public IActionResult Index(string f, int p = 1)
         {
             if (f == null)
@@ -53,6 +49,12 @@ namespace Blog.Controllers
         {
             wm.TUpdate(writing);
             return RedirectToAction("Index");
+        }
+
+        public IActionResult Home()
+        {
+            var values= wm.TGetList();
+            return View(values);
         }
     }
 }

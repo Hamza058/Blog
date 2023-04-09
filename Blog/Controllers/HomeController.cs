@@ -37,7 +37,20 @@ namespace Blog.Controllers
             return RedirectToAction("Index");
         }
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+		[HttpGet]
+		public IActionResult EditAdmin(int id)
+		{
+			var value = am.TGetByID(id);
+			return View(value);
+		}
+		[HttpPost]
+		public IActionResult EditAdmin(Admin admin)
+		{
+			am.TUpdate(admin);
+			return RedirectToAction("Index");
+		}
+
+		[ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
 		public IActionResult Error()
 		{
 			return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
