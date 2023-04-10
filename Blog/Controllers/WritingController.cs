@@ -22,8 +22,14 @@ namespace Blog.Controllers
         [HttpPost]
         public IActionResult AddWriting(Writing writing)
         {
+            var fileExtension = Path.GetExtension(writing.Image);
+            var newFileName = Guid.NewGuid().ToString() + fileExtension;
+            var filePath = Path.Combine("wwwroot", "img", newFileName);
 
-			writing.CreatedDate = DateTime.Now;
+            using var stream = new FileStream(filePath, FileMode.Create);
+
+            writing.CreatedDate = DateTime.Now;
+            writing.Image = newFileName;
             wm.TAdd(writing);
             return RedirectToAction("Index");
         }
