@@ -1,0 +1,69 @@
+﻿@using EntityLayer.Concrete
+@model Contact
+
+@{
+    ViewData["Title"] = "Home";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="primary-content marRight30">
+    <div class="mid-panel">
+        <div class="mid-panel-content">
+            <div class="title">
+                <h1>contact</h1>
+            </div>
+            <div class="border"></div>
+            <h2>Subheading goes here</h2>
+            <form asp-action="Home" method="post">
+                <div class="contact-form margin-top">
+                    <label>
+                        <span>Full name</span>
+                        <input type="text" class="input_text" asp-for="FullName" id="name" required />
+                    </label>
+                    <label>
+                        <span>Email</span>
+                        <input type="email" class="input_text" asp-for="Email" id="email" required />
+                    </label>
+                    <label>
+                        <span>Subject</span>
+                        <input type="text" class="input_text" asp-for="Subject" id="subject" required />
+                    </label>
+                    <label>
+                        <span>Message</span>
+                        <textarea class="message" asp-for="Message" id="feedback" required></textarea>
+                        <input type="submit" class="button" value="Submit Form" />
+                    </label>
+                </div>
+            </form>
+            <div class="clearing"></div>
+            <div class="address">
+                <div class="panel">
+                    <div class="title">
+                        <h1>Address - 01</h1>
+                    </div>
+                    <div class="content">
+                        <p>
+                            Block No:5, Some where Road,<br />
+                            City name, State, Country name
+                        </p>
+                        <p><span>Phone :</span> 000 888 88888</p>
+                        <p><span>Email :</span> <a href="mailto:info@companyname.com">info@companyname.com</a></p>
+                    </div>
+                </div>
+                <div class="panel">
+                    <div class="title">
+                        <h1>Address - 02</h1>
+                    </div>
+                    <div class="content">
+                        <p>
+                            Block No:5, Some where Road,<br />
+                            City name, State, Country name
+                        </p>
+                        <p><span>Phone :</span> 000 888 88888</p>
+                        <p><span>Email :</span> <a href="mailto:info@companyname.com">info@companyname.com</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
