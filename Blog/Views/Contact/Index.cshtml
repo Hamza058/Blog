@@ -7,7 +7,28 @@
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
-
+@section Scripts{
+    <script type="text/javascript">
+        function getInfo(id) {
+            $.ajax({
+                type: "Get",
+                url: "/Contact/GetInfoContact/",
+                data: { id: id },
+                success: function (data) {
+                    $("#info").html("");
+                    console.log(data.message)
+                    let infos = `<h5 class="card-title">${data.fullName}</h5>
+                                 <h6 class="card-subtitle mb-2 text-body-secondary">${data.subject}</h6>
+                                 <p class="card-text">${data.message}</p>`;
+                    $("#info").append(infos);
+                },
+                error: function (e) {
+                    console.log(e);
+                }
+            })
+        };
+    </script>
+}
 <h1>Contact</h1>
 
 <table class="table text-center">
@@ -18,7 +39,7 @@
             <th>Email</th>
             <th>Subject</th>
             <th>Message</th>
-            <th>CreatedDate</th>
+            <th>Created Date</th>
             <th></th>
         </tr>
     </thead>
@@ -26,19 +47,40 @@
         @foreach (var item in Model)
         {
             <tr>
-                <td>@item.ContactId</td>
-                <td>@item.FullName</td>
-                <td>@item.Email</td>
-                <td>@item.Subject</td>
-                <td>@item.Message</td>
-                <td>@item.CreatedDate</td>
-                <td>
-                    <a class='bx bx-edit' asp-action="EditWriting" asp-route-id="@item.ContactId"></a>
+                <td width="5%">@item.ContactId</td>
+                <td width="15%">@item.FullName</td>
+                <td width="20%">@item.Email</td>
+                <td width="20%">@item.Subject</td>
+                <td width="20%">@(item.Message.Length > 20 ? item.Message.Substring(0, 20)+"...":item.Message)</td>
+                <td width="15%">@item.CreatedDate</td>
+                <td width="5%">
+                    <i onclick="getInfo(@item.ContactId)" class="bx bxs-info-circle" data-bs-toggle="modal" data-bs-target="#getInfoModal" style="cursor:pointer"></i>
                 </td>
             </tr>
         }
     </tbody>
 </table>
+
+<div class="modal" id="getInfoModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5">Message Detail</h1>
+            </div>
+            <div class="modal-body">
+                <div class="card">
+                    <div class="card-body" id="info">
+
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-secondary" data-bs-dismiss="modal">Kapat</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <br />
 @Html.PagedListPager((IPagedList)Model, p => Url.Action("Index", new { p }), new X.PagedList.Web.Common.PagedListRenderOptions
 {

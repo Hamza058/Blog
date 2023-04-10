@@ -29,5 +29,11 @@ namespace Blog.Controllers
             cm.TAdd(contact);
             return RedirectToAction("Home","Writing");
         }
+        [HttpGet]
+        public IActionResult GetInfoContact(int id)
+        {
+            var value = cm.TGetByID(id);
+            return Json(value);
+        }
     }
 }
