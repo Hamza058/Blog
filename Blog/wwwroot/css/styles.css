@@ -25,6 +25,7 @@ CSS TWEAKS
 .marginTop { margin-top:30px;}
 .marginTop10{ margin-top:10px;}
 .marginBottom { margin-bottom:60px;}
+.marginBottom10 {margin-bottom: 10px;}
 .padTop { padding-top:20px;}
 .padBottom { padding-bottom:30px;}
 .padBottom20 { padding-bottom:20px;}
@@ -50,6 +51,7 @@ HEADER CLASSES
     overflow: hidden;
     padding-left: 10%;
     padding-right: 5%;
+    padding-bottom: 3%;
 }
 .header-left-panel{width:60%; float:left;}
 .logo-wrap{width:350px; float:left; background:#f3f3ee; overflow:hidden;}
@@ -130,8 +132,8 @@ SIDEBAR CLASSS
 .search-panel .title h1{color:#50453b; font-weight:normal;}
 .search-panel .border{border-bottom:1px solid #dadacb; margin-top:15px;}
 .search-panel .searchbox{width:100%;}
-.search-panel .input{width:200px; height:40px; float:left;  background:#e5e2d3; border:0px; font-size:14px; color:#978e86; padding-left:10px;}
-.search-panel .button a{width:40px; height:40px; float:right; background: url(../img/icon-search.png) no-repeat center #cf9359;}
+.search-panel .input{width:95%; height:40px; float:left;  background:#e5e2d3; border:0px; font-size:14px; color:#978e86; padding-left:10px;}
+.search-panel .button button{width:5%; height:40px; float:right; background: url(../img/icon-search.png) no-repeat center #cf9359; border:none}
 
 .midpanel{width:100%; background:#f3f3ee; overflow:hidden; margin-top:30px;}
 .midpanel .content{width:260px; margin:0 auto; margin-top:30px; }

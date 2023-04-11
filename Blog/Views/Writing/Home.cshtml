@@ -1,14 +1,26 @@
 ﻿@using EntityLayer.Concrete
-@model List<Writing>
+@using X.PagedList
+@using X.PagedList.Mvc.Core
+@model IPagedList<Writing>
 
 @{
     ViewData["Title"] = "Home";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<!--- panel wrap div end -->
+<form asp-route="f" method="post">
+    <div class="search-panel">
+        <div class="searchbox">
+            <input name="f" type="text" class="input" />
+            <div class="button">
+            <button type="submit"></button>
+            </div>
+        </div>
+    </div>
+</form>
+<br />
 <div class="primary-content marRight30">
-    <div class="mid-panel">
+    <div class="mid-panel marginBottom10">
         <div class="panel">
             <div class="title">
                 <h1>Blog</h1>
@@ -43,4 +55,10 @@
             }
         </div>
     </div>
+    @Html.PagedListPager((IPagedList)Model, p => Url.Action("Home", new { p }), new X.PagedList.Web.Common.PagedListRenderOptions
+    {
+    LiElementClasses = new List<string>
+    {"page-link"}
+    })
 </div>
+

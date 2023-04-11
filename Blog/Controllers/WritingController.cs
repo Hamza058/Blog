@@ -57,9 +57,11 @@ namespace Blog.Controllers
             return RedirectToAction("Index");
         }
 
-        public IActionResult Home()
+        public IActionResult Home(string f, int p = 1)
         {
-            var values= wm.TGetList();
+            if (f == null)
+                f = "";
+            var values= wm.TGetList().Where(x=>x.Heading.ToLower().Contains(f.ToLower())).ToPagedList(p, 10);
             return View(values);
         }
     }
