@@ -1,0 +1,37 @@
+﻿@using EntityLayer.Concrete
+@model Admin
+@{
+    Layout = null;
+    if (ViewBag.Message != null)
+    {
+        <div class="alert alert-danger text-center">
+            @ViewBag.Message
+        </div>
+    }
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" type="text/css" href="~/css/login.css">
+
+    <title>Login</title>
+</head>
+<body>
+    <div class="container" id="menuko">
+        <h1>Login Page</h1>
+        <form method="post">
+            <label for="username">Admin Name:</label>
+            <input type="text" id="username" asp-for="AdminName">
+
+            <label for="password">Şifre:</label>
+            <input type="password" id="password" asp-for="AdminPassword">
+
+            <button type="submit">Login</button>
+        </form>
+    </div>
+</body>
+</html>
