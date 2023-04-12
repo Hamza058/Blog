@@ -20,14 +20,13 @@ namespace Blog.Controllers
         }
 
         [HttpPost]
-        public IActionResult AddWriting(Writing writing)
+        public IActionResult AddWriting(Writing writing, IFormFile file)
         {
-            var fileExtension = Path.GetExtension(writing.Image);
+            var fileExtension = Path.GetExtension(file.FileName);
             var newFileName = Guid.NewGuid().ToString() + fileExtension;
             var filePath = Path.Combine("wwwroot", "img", newFileName);
-
             using var stream = new FileStream(filePath, FileMode.Create);
-
+            file.CopyTo(stream);
             writing.CreatedDate = DateTime.Now;
             writing.Image = newFileName;
             wm.TAdd(writing);

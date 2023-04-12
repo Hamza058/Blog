@@ -6,7 +6,7 @@
             <div class="modal-header">
                 <h1 class="modal-title fs-5">Add Writing</h1>
             </div>
-            <form asp-controller="Writing" asp-action="AddWriting" method="post">
+            <form asp-controller="Writing" asp-action="AddWriting" method="post" enctype="multipart/form-data">
                 <div class="modal-body">
                     <div class="col mb-2">
                         <text>Heading</text>
@@ -17,7 +17,7 @@
                         <textarea class="form-control" name="Content" required></textarea>
                     </div>
                     <div class="col mb-2">
-                        <input type="file" class="form-control" name="Image" required />
+                        <input type="file" class="form-control" name="file" required />
                     </div>
                 </div>
                 <div class="modal-footer">
