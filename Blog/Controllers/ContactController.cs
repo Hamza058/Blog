@@ -1,6 +1,7 @@
 ﻿using BusinessLayer.Concrete;
 using DataAccessLayer.EntityFramework;
 using EntityLayer.Concrete;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using X.PagedList;
 
@@ -17,12 +18,15 @@ namespace Blog.Controllers
             var values = cm.TGetList().Where(x => x.FullName.ToLower().Contains(f.ToLower())).ToPagedList(p, 10);
             return View(values);
         }
+        
         [HttpGet]
+        [AllowAnonymous]
         public IActionResult Home()
         {
             return View();
         }
         [HttpPost]
+        [AllowAnonymous]
         public IActionResult Home(Contact contact)
         {
             contact.CreatedDate = DateTime.Now;

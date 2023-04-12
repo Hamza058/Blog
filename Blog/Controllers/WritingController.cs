@@ -1,6 +1,7 @@
 ﻿using BusinessLayer.Concrete;
 using DataAccessLayer.EntityFramework;
 using EntityLayer.Concrete;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.FileProviders;
 using X.PagedList;
@@ -56,7 +57,7 @@ namespace Blog.Controllers
             wm.TUpdate(writing);
             return RedirectToAction("Index");
         }
-
+        [AllowAnonymous]
         public IActionResult Home(string f, int p = 1)
         {
             if (f == null)
