@@ -6,7 +6,7 @@
             <div class="modal-header">
                 <h1 class="modal-title fs-5">Add Writing</h1>
             </div>
-            <form asp-controller="Writing" asp-action="AddWriting" method="post" enctype="multipart/form-data">
+            <form asp-controller="Writing" asp-action="AddWriting" method="post" enctype="multipart/form-data" asp-antiforgery="true">
                 <div class="modal-body">
                     <div class="col mb-2">
                         <text>Heading</text>

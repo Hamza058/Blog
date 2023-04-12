@@ -20,6 +20,7 @@ namespace Blog.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public IActionResult AddWriting(Writing writing, IFormFile file)
         {
             var fileExtension = Path.GetExtension(file.FileName);
