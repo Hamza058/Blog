@@ -4,13 +4,28 @@ GLOBALS CLASSES
 *{margin:0; padding:0; font-family: 'Ropa Sans', sans-serif;}
 body{background:url(../img/pattern-1.jpg);}
 
-p{font-family: 'Ropa Sans', sans-serif; color:#978e86; font-size:14px; font-weight:normal; line-height:20px;}
+p {
+    font-family: 'Ropa Sans', sans-serif;
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 30px;
+}
 a{text-decoration:none; color:#cf9359;}
 a:hover{text-decoration:none; color:#978e86;}
 ul li { list-style:none; outline:none;}
-img { border:none; }
-img { border:none;}
-h1{font-family: 'Ropa Sans', sans-serif; font-size:26px; color:#282623; text-transform:uppercase; font-weight:normal;}
+img { 
+    border:none;
+    width:250px;
+    height:175px;
+}
+h1{
+    font-family: 'Ropa Sans', sans-serif; font-size:26px; color:#cf9359; text-transform:uppercase; font-weight:normal;
+}
+
+.single {
+    font-size: 2rem !important;
+}
+
 /*-------------------------------------------------
 CSS TWEAKS
 -------------------------------------------------*/
@@ -35,7 +50,6 @@ GENERAL CLASSES
 -------------------------------------------------*/
 
 .panel {overflow:hidden;}
-.title {}
 .content { overflow:hidden; font-size:14px;}
 .button-link{ }
 .button-link a{font-family: 'Ropa Sans', sans-serif; text-transform:uppercase;}
@@ -118,7 +132,10 @@ PRIMARY CONTENT CLASSS
 .primary-content .mid-panel{width:100%; background:#f3f3ee; padding-bottom:30px;}
 .primary-content .mid-panel-content{width:90%; margin:0 auto; overflow:hidden; padding-top:30px;}
 .primary-content .title {}
-.primary-content .mid-panel-content h2{color:#cf9359; font-size:22px; padding-top:20px; font-weight:normal;}
+.primary-content .mid-panel-content h1 {
+    padding-left: 5px;
+}
+.primary-content .mid-panel-content h2{color:#cf9359; font-size:22px; padding-top:20px; font-weight:normal; padding-left:5px;}
 .primary-content .mid-panel-content p{padding-top:10px;}
 .primary-content .border{border-bottom:1px solid #dadacb; margin-top:10px;}
 .primary-content .img{width:180px; margin-top:30px; float:left;}
@@ -173,3 +190,172 @@ CONTACT FORM CLASSS
 
 .footer{width:960px; margin:0 auto; margin-top:76px; overflow:hidden;}
 .footer p{text-align:center; color:#cf9359; padding-bottom:72px;}
+
+/*-------------------------------------------------
+MEDÝA ONLY SCREEN
+-------------------------------------------------*/
+
+@media only screen and (max-width: 500px) {
+    body {
+        background: url(../img/pattern-1.jpg);
+        width:100% !important;
+    }
+    .marRight10 {
+        margin-right: 10px;
+    }
+    img {
+        border: none;
+        width: 80px;
+        height: 75px;
+    }
+    /*----- --------------------------------------------
+    LAYOUT CLASSES
+    -------------------------------------------------*/
+    .page-wrapper {
+        width: 100%;
+        margin: 0 auto;
+        margin-top: 30px;
+        padding-bottom: 50px;
+        overflow: hidden;
+    }
+    /*------------- ------------------------------------
+    PRIMARY CONTENT CLASSS
+    -------------------------------------------------*/
+    .primary-content {
+        width: 100%;
+        float: left;
+        overflow: hidden;
+    }
+    .primary-content .container {
+        width: 100%;
+        margin: 0 auto;
+    }
+
+    .primary-content .container-panel {
+        width: 100%;
+        margin-right: 20px;
+        border-bottom: 1px solid #9e978b;
+        overflow: hidden;
+    }
+
+    .primary-content .mid-panel-content {
+        width: 98%;
+        margin: 0 auto;
+        overflow: hidden;
+        padding-top: 30px;
+    }
+
+    .primary-content .mid-panel-content p {
+        font-size:70%;
+    }
+
+    /*-------------------------------------------------
+    HEADER CLASSES
+    -------------------------------------------------*/
+    .header {
+        width: 100%;
+        margin: 0 auto;
+        overflow: hidden;
+        padding-left: 5%;
+        padding-right: 5%;
+        padding-bottom: 3%;
+    }
+
+    .header-left-panel {
+        width: 45%;
+        float: left;
+    }
+
+    .logo-wrap {
+        width: 75%;
+        float: left;
+        background: #f3f3ee;
+        overflow: hidden;
+    }
+
+    .logo {
+        width: 100%;
+        float: left;
+        margin-left: 10px;
+        margin-top: 114px;
+    }
+
+        .logo h2 {
+            font-family: 'Ropa Sans', sans-serif;
+            font-size: 70%;
+            color: #cf9359;
+            text-transform: uppercase;
+            font-weight: normal;
+        }
+
+        .logo h1 {
+            color: #50453b;
+            font-size: 100%;
+            padding-bottom: 22px;
+        }
+
+    .header-right-panel {
+        width: 55%;
+        float: right;
+        overflow: hidden;
+        margin-top: 30px;
+    }
+
+    .header-right-panel-top {
+        width: 100%;
+        float: right;
+    }
+
+    .header-right-panel p {
+        color: #cf9359;
+        float: right;
+        font-size: 80%;
+        text-align: right;
+        font-weight: normal;
+    }
+
+    .footer {
+        width: 100% !important;
+        margin: 0 auto;
+        margin-top: 76px;
+        overflow: hidden;
+    }
+
+        .footer p {
+            text-align: center;
+            color: #cf9359;
+            padding-bottom: 72px;
+        }
+    .menu {
+        width: 100%;
+        margin-top: 40px;
+    }
+
+        .menu ul li {
+            padding-bottom: 20px;
+            width: 100%;
+        }
+
+            .menu ul li a {
+                display: block;
+                width: 50%;
+                height: 40px;
+                line-height: 40px;
+                background: #414141;
+                font-family: 'Source Sans Pro', sans-serif;
+                font-size: 80%;
+                color: #ffffff;
+                text-align: center;
+                text-transform: uppercase;
+            }
+
+                .menu ul li a:hover {
+                    background: #cf9359;
+                    color: #282828;
+                }
+
+                .menu ul li a.active {
+                    background: #cf9359;
+                    color: #282828;
+                }
+}

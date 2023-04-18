@@ -62,8 +62,14 @@ namespace Blog.Controllers
         {
             if (f == null)
                 f = "";
-            var values= wm.TGetList().Where(x=>x.Heading.ToLower().Contains(f.ToLower())).ToPagedList(p, 10);
+            var values= wm.TGetList().Where(x=>x.Heading.ToLower().Contains(f.ToLower()) && x.Status).ToPagedList(p, 10);
             return View(values);
+        }
+        [AllowAnonymous]
+        public IActionResult Single(int id)
+        {
+            var value = wm.TGetByID(id);
+            return View(value);
         }
     }
 }

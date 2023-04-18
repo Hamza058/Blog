@@ -12,7 +12,7 @@
 	<input type="hidden" asp-for="WritingId" value="@Model.WritingId" />
 	<input type="hidden" asp-for="Image" />
 	<input type="text" class="form-control mb-1" asp-for="Heading" value="@Model.Heading" />
-	<input type="text" class="form-control mb-1" asp-for="Content" value="@Model.Content" />
+	<textarea class="form-control mb-1" asp-for="Content" rows="5">@Model.Content</textarea>
 	<input type="hidden" asp-for="CreatedDate" value="@Model.CreatedDate" />
 	<input type="hidden" asp-for="Status" value="@Model.Status" />
 	<input type="file" class="form-control mb-1" asp-for="Image" />
