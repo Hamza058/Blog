@@ -50,11 +50,6 @@ namespace Blog.Controllers
 			am.TUpdate(admin);
 			return RedirectToAction("Index");
 		}
-        [AllowAnonymous]
-        public IActionResult Home()
-        {
-            return View();
-        }
 
         [AllowAnonymous]		
 		public IActionResult Error(int code)

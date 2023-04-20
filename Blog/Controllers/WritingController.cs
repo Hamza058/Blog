@@ -24,13 +24,17 @@ namespace Blog.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult AddWriting(Writing writing, IFormFile file)
         {
-            var fileExtension = Path.GetExtension(file.FileName);
-            var newFileName = Guid.NewGuid().ToString() + fileExtension;
-            var filePath = Path.Combine("wwwroot", "img", newFileName);
-            using var stream = new FileStream(filePath, FileMode.Create);
-            file.CopyTo(stream);
+            if (file != null)
+            {
+                var fileExtension = Path.GetExtension(file.FileName);
+                var newFileName = Guid.NewGuid().ToString() + fileExtension;
+                var filePath = Path.Combine("wwwroot", "img", newFileName);
+                using var stream = new FileStream(filePath, FileMode.Create);
+                file.CopyTo(stream);
+                writing.Image = newFileName;
+            }
             writing.CreatedDate = DateTime.Now;
-            writing.Image = newFileName;
+            writing.Status = true;
             wm.TAdd(writing);
             return RedirectToAction("Index");
         }

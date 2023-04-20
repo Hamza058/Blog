@@ -30,28 +30,52 @@
             {
                 <div class="content marginTop">
                     <div class="container-fluid">
-                        <div class="row">
-                            <div class="col-4">
-                                <img src="~/img/@item.Image" class="marRight30" />
-                            </div>
-                            <div class="col-8">
-                                <div class="row-fluid-cols-3">
-                                    <div class="row">
-                                        <div class="col-9">
-                                            <h2>@(item.Heading.Length > 25 ? item.Heading.Substring(0, 26) + "...":item.Heading)</h2>
+                        <div class="row border-bottom pb-2">
+                            @if (item.Image != null)
+                            {
+                                <div class="col-4">
+                                    <img src="~/img/@item.Image" class="marRight30" />
+                                </div>
+                                <div class="col-8">
+                                    <div class="row-fluid-cols-3">
+                                        <div class="row">
+                                            <div class="col-9">
+                                                <h2>@(item.Heading.Length > 25 ? item.Heading.Substring(0, 26) + "..." : item.Heading)</h2>
+                                            </div>
+                                            <div class="col-3 p-0">
+                                                <label>@item.CreatedDate.ToString("dd/MM/yyyy")</label>
+                                            </div>
                                         </div>
-                                        <div class="col-3 p-0">
-                                            <label style="font-size: 12px;">@item.CreatedDate.ToString("dd/MM/yyyy")</label>
+                                        <div class="col-12">
+                                            <p>@(item.Content.Length > 200 ? item.Content.Substring(0, 201) + "..." : item.Content)</p>
                                         </div>
-                                    </div>
-                                    <div class="col-12">
-                                        <p>@(item.Content.Length > 200 ? item.Content.Substring(0, 201) + "..." : item.Content)</p>
-                                    </div>
-                                    <div class="col-12">
-                                        <a asp-action="Single" asp-route-id="@item.WritingId" class="btn btn-success">Read More</a>
+                                        <div class="col-12">
+                                            <a asp-action="Single" asp-route-id="@item.WritingId" class="btn btn-success">Read More</a>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
+                            }
+                            else
+                            {
+                                <div class="col-12">
+                                    <div class="row-fluid-cols-3">
+                                        <div class="row">
+                                            <div class="col-10">
+                                                <h2>@(item.Heading.Length > 25 ? item.Heading.Substring(0, 26) + "..." : item.Heading)</h2>
+                                            </div>
+                                            <div class="col-2 p-0">
+                                                <label>@item.CreatedDate.ToString("dd/MM/yyyy")</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <p>@(item.Content.Length > 200 ? item.Content.Substring(0, 201) + "..." : item.Content)</p>
+                                        </div>
+                                        <div class="col-12">
+                                            <a asp-action="Single" asp-route-id="@item.WritingId" class="btn btn-success">Read More</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
                         </div>
                     </div>
                 </div>

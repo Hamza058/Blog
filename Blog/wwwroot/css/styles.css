@@ -24,6 +24,13 @@ h1{
 
 .single {
     font-size: 2rem !important;
+    font-weight: 600 !important;
+    opacity:80%;
+}
+
+label {
+    font-size: 1.5rem !important;
+    opacity:60%;
 }
 
 /*-------------------------------------------------
@@ -149,8 +156,8 @@ SIDEBAR CLASSS
 .search-panel .title h1{color:#50453b; font-weight:normal;}
 .search-panel .border{border-bottom:1px solid #dadacb; margin-top:15px;}
 .search-panel .searchbox{width:100%;}
-.search-panel .input{width:95%; height:40px; float:left;  background:#e5e2d3; border:0px; font-size:14px; color:#978e86; padding-left:10px;}
-.search-panel .button button{width:5%; height:40px; float:right; background: url(../img/icon-search.png) no-repeat center #cf9359; border:none}
+.search-panel .input{width:90%; height:40px; float:left;  background:#e5e2d3; border:0px; font-size:14px; color:#978e86; padding-left:10px;}
+.search-panel .button button{width:10%; height:40px; float:right; background: url(../img/icon-search.png) no-repeat center #cf9359; border:none}
 
 .midpanel{width:100%; background:#f3f3ee; overflow:hidden; margin-top:30px;}
 .midpanel .content{width:260px; margin:0 auto; margin-top:30px; }
@@ -208,11 +215,18 @@ MEDÝA ONLY SCREEN
         width: 80px;
         height: 75px;
     }
+    label {
+        font-size: 12px !important;
+    }
+    .single {
+        font-size: 20px !important;
+        font-weight: 600 !important;
+    }
     /*----- --------------------------------------------
     LAYOUT CLASSES
     -------------------------------------------------*/
     .page-wrapper {
-        width: 100%;
+        width: 95%;
         margin: 0 auto;
         margin-top: 30px;
         padding-bottom: 50px;

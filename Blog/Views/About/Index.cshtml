@@ -1,0 +1,51 @@
+﻿@using EntityLayer.Concrete
+@model About
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+@section Scripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#btnSave").click(function () {
+                var id = $("#Id").val();
+                var heading = $("#Heading").val();
+                var content = $("#Content").val();
+                var phone = $("#Phone").val();
+                var mail = $("#Mail").val();
+                var address = $("#Address").val();
+
+                var jsonData = { "id": id, "heading": heading, "content": content, "phone": phone, "mail": mail, "address": address, };
+
+                $.ajax({
+                    type: "POST",
+                    url: "/About/EditAbout",
+                    data: jsonData,
+                    success: function (data) {
+                        swal("Good job!", "You clicked the button!", "success");
+                    },
+                    error: function (e) {
+                        console.log(e);
+                    }
+                })
+            })
+        })
+    </script>
+}
+
+<h1>About</h1>
+
+<input type="hidden" id="Id" value="@Model.Id" />
+<label>Heading</label>
+<input type="text" class="form-control mb-2" id="Heading" value="@Model.Heading"/>
+<label>Content</label>
+<textarea type="text" class="form-control mb-2" id="Content" rows="5">@Model.Content</textarea>
+<label>Phone</label>
+<input type="text" class="form-control mb-2" id="Phone" value="@Model.Phone" />
+<label>Mail</label>
+<input type="text" class="form-control mb-2" id="Mail" value="@Model.Mail" />
+<label>Address</label>
+<input type="text" class="form-control mb-2" id="Address" value="@Model.Address" />
+
+<button id="btnSave" class="btn btn-success" type="button">Edit About</button>

@@ -10,6 +10,7 @@ namespace Blog.Controllers
     public class ContactController : Controller
     {
         ContactManager cm = new ContactManager(new EFContactDal());
+        AboutManager am = new AboutManager(new EFAboutDal());
 
         public IActionResult Index(string f, int p = 1)
         {
@@ -23,6 +24,7 @@ namespace Blog.Controllers
         [AllowAnonymous]
         public IActionResult Home()
         {
+            ViewBag.about=am.TGetList().First();
             return View();
         }
         [HttpPost]
