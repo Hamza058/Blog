@@ -10,8 +10,7 @@ p {
     font-weight: normal;
     line-height: 30px;
 }
-a{text-decoration:none; color:#cf9359;}
-a:hover{text-decoration:none; color:#978e86;}
+
 ul li { list-style:none; outline:none;}
 img { 
     border:none;
@@ -81,7 +80,15 @@ HEADER CLASSES
 .logo h1{color:#50453b; font-size:42px; padding-bottom:22px;}
 .header-right-panel{width:40%; float:right; overflow:hidden; margin-top:30px;}
 .header-right-panel-top{width:280px; float:right;}
-.header-right-panel p{color:#cf9359; float:right; font-size:14px; text-align:right; font-weight:normal;}
+.header-right-panel p{color:#cf9359; float:right; font-size:14px; text-align:right; font-weight:normal; width:100%;}
+.header-right-panel a {
+    text-decoration: none;
+    color: #cf9359;
+}
+.header-right-panel a:hover {
+    text-decoration: none;
+    color: #978e86;
+}
 
 .menu{width:400px; float:left; margin-top:40px;}
 .menu ul li{float:left; padding-bottom:20px; width:100px;}
@@ -195,7 +202,7 @@ CONTACT FORM CLASSS
 .address .panel .content p a:hover{color:#282623;}
 
 
-.footer{width:960px; margin:0 auto; margin-top:76px; overflow:hidden;}
+.footer{width:100%; margin-top:76px; overflow:hidden; }
 .footer p{text-align:center; color:#cf9359; padding-bottom:72px;}
 
 /*-------------------------------------------------

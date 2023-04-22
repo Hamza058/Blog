@@ -18,8 +18,8 @@ namespace Blog.Controllers
         [AllowAnonymous]
         public IActionResult Home()
         {
-            var value = am.TGetList().First();
-            return View(value);
+            ViewBag.about = am.TGetList().First();
+            return View();
         }
 
         [HttpPost]

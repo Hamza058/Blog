@@ -6,6 +6,37 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+@section Scripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#sendMessage").submit(function () {
+                var name = $("#name").val();
+                var email = $("#email").val();
+                var subject = $("#subject").val();
+                var feedback = $("#feedback").val();
+
+                var jsonData = { "fullName": name, "email": email, "subject": subject, "Message": feedback };
+
+                $.ajax({
+                    type: "POST",
+                    url: "/Contact/Home",
+                    data: jsonData,
+                    success: function (data) {
+                        alert("Your message has been sent");
+                    },
+                    error: function (e) {
+                        alert("Your message hasn't been sent");
+                    }
+                })
+                document.getElementById('name').value = "";
+                document.getElementById('email').value = "";
+                document.getElementById('subject').value = "";
+                document.getElementById('feedback').value = "";
+            })
+        })
+    </script>
+}
+
 <div class="primary-content marRight30">
     <div class="mid-panel">
         <div class="mid-panel-content">
@@ -14,53 +45,39 @@
             </div>
             <div class="border"></div>
             <h2>Subheading goes here</h2>
-            <form asp-action="Home" method="post">
-                <div class="contact-form margin-top">
+            <div class="contact-form margin-top">
+                <form id="sendMessage">
                     <label>
                         <span>Full name</span>
-                        <input type="text" class="input_text" asp-for="FullName" id="name" required />
+                        <input type="text" class="input_text" id="name" required />
                     </label>
                     <label>
                         <span>Email</span>
-                        <input type="email" class="input_text" asp-for="Email" id="email" required />
+                        <input type="email" class="input_text" id="email" required />
                     </label>
                     <label>
                         <span>Subject</span>
-                        <input type="text" class="input_text" asp-for="Subject" id="subject" required />
+                        <input type="text" class="input_text" id="subject" required />
                     </label>
                     <label>
                         <span>Message</span>
-                        <textarea class="message" asp-for="Message" id="feedback" required></textarea>
-                        <input type="submit" class="button" value="Submit Form" />
+                        <textarea class="message" id="feedback" required></textarea>
                     </label>
-                </div>
-            </form>
+                    <button type="submit" class="button">Submit Form</button>
+                </form>
+            </div>
             <div class="clearing"></div>
             <div class="address">
                 <div class="panel">
                     <div class="title">
-                        <h1>Address - 01</h1>
+                        <h1>Address</h1>
                     </div>
                     <div class="content">
                         <p>
-                            Block No:5, Some where Road,<br />
-                            City name, State, Country name
+                            @ViewBag.about.Address
                         </p>
                         <p><span>Phone :</span> @ViewBag.about.Phone</p>
-                        <p><span>Email :</span> <a href="mailto:info@companyname.com">info@companyname.com</a></p>
-                    </div>
-                </div>
-                <div class="panel">
-                    <div class="title">
-                        <h1>Address - 02</h1>
-                    </div>
-                    <div class="content">
-                        <p>
-                            Block No:5, Some where Road,<br />
-                            City name, State, Country name
-                        </p>
-                        <p><span>Phone :</span> 000 888 88888</p>
-                        <p><span>Email :</span> <a href="mailto:info@companyname.com">info@companyname.com</a></p>
+                        <p><span>Email :</span> <a href="@ViewBag.about.Mail">@ViewBag.about.Mail</a></p>
                     </div>
                 </div>
             </div>

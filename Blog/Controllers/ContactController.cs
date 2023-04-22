@@ -33,7 +33,7 @@ namespace Blog.Controllers
         {
             contact.CreatedDate = DateTime.Now;
             cm.TAdd(contact);
-            return RedirectToAction("Home","Writing");
+            return Json(new { IsSuccess = "true" });
         }
         [HttpGet]
         public IActionResult GetInfoContact(int id)

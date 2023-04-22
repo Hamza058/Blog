@@ -11,8 +11,9 @@ namespace Blog.Controllers
     public class WritingController : Controller
     {
         WritingManager wm = new WritingManager(new EFWritingDal());
+        AboutManager am = new AboutManager(new EFAboutDal());
 
-		public IActionResult Index(string f, int p = 1)
+        public IActionResult Index(string f, int p = 1)
         {
             if (f == null)
                 f = "";
@@ -66,9 +67,11 @@ namespace Blog.Controllers
         {
             if (f == null)
                 f = "";
-            var values= wm.TGetList().Where(x=>x.Heading.ToLower().Contains(f.ToLower()) && x.Status).ToPagedList(p, 10);
+            var values = wm.TGetList().Where(x => x.Heading.ToLower().Contains(f.ToLower()) && x.Status).ToPagedList(p, 10);
+            ViewBag.about = am.TGetList().First();
             return View(values);
         }
+
         [AllowAnonymous]
         public IActionResult Single(int id)
         {
