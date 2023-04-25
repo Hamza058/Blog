@@ -9,5 +9,6 @@ namespace BusinessLayer.Abstract
 {
 	public interface IWritingService : IGenericService<Writing>
 	{
-	}
+        void TDeleteSql(Writing t);
+    }
 }

@@ -1,21 +1,18 @@
-﻿@using EntityLayer.Concrete
-@model Writing
-
-@{
+﻿@{
 	ViewData["Title"] = "EditWriting";
 	Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
 <h1>Edit Writing Page</h1>
 <br />
-<form asp-action="EditWriting" method="post">
-	<input type="hidden" asp-for="WritingId" value="@Model.WritingId" />
-	<input type="hidden" asp-for="Image" />
-	<input type="text" class="form-control mb-1" asp-for="Heading" value="@Model.Heading" />
-	<textarea class="form-control mb-1" asp-for="Content" rows="5">@Model.Content</textarea>
-	<input type="hidden" asp-for="CreatedDate" value="@Model.CreatedDate" />
-	<input type="hidden" asp-for="Status" value="@Model.Status" />
-	<input type="file" class="form-control mb-1" asp-for="Image" />
+<form asp-action="EditWriting" method="post" enctype="multipart/form-data" asp-antiforgery="true">
+	<input type="hidden" name="WritingId" value="@Model.WritingId" />
+	<input type="hidden" name="Image" value="@Model.Image"/>
+	<input type="text" class="form-control mb-1" name="Heading" value="@Model.Heading" />
+	<textarea class="form-control mb-1" name="Content" rows="5">@Model.Content</textarea>
+	<input type="hidden" name="CreatedDate" value="@Model.CreatedDate" />
+	<input type="hidden" name="Status" value="@Model.Status" />
+	<input type="file" class="form-control mb-1" name="file" />
 	<button type="submit" class="btn btn-success">Save</button>
 </form>
 

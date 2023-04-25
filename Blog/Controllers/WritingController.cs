@@ -4,6 +4,8 @@ using EntityLayer.Concrete;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.FileProviders;
+using System.Text;
+using System.Xml.Linq;
 using X.PagedList;
 
 namespace Blog.Controllers
@@ -50,6 +52,15 @@ namespace Blog.Controllers
             wm.TDelete(writing);
             return RedirectToAction("Index");
         }
+        public IActionResult DeleteSqlWriting(int id)
+        {
+            var writing = wm.TGetByID(id);
+            var filePath = Path.Combine("wwwroot", "img", writing.Image);
+            System.IO.File.Delete(filePath);
+            wm.TDeleteSql(writing);
+            return RedirectToAction("Index");
+        }
+
         [HttpGet]
         public IActionResult EditWriting(int id)
         {
@@ -57,8 +68,18 @@ namespace Blog.Controllers
             return View(value);
         }
         [HttpPost]
-        public IActionResult EditWriting(Writing writing)
+        [ValidateAntiForgeryToken]
+        public IActionResult EditWriting(Writing writing, IFormFile file)
         {
+            if (file != null)
+            {
+                var fileExtension = Path.GetExtension(file.FileName);
+                var newFileName = Guid.NewGuid().ToString() + fileExtension;
+                var filePath = Path.Combine("wwwroot", "img", newFileName);
+                using var stream = new FileStream(filePath, FileMode.Create);
+                file.CopyTo(stream);
+                writing.Image = newFileName;
+            }
             wm.TUpdate(writing);
             return RedirectToAction("Index");
         }
@@ -67,7 +88,7 @@ namespace Blog.Controllers
         {
             if (f == null)
                 f = "";
-            var values = wm.TGetList().Where(x => x.Heading.ToLower().Contains(f.ToLower()) && x.Status).ToPagedList(p, 10);
+            var values = wm.TGetList().Where(x => x.Heading.ToLower().Contains(f.ToLower()) && x.Status).OrderByDescending(x=>x.CreatedDate).ToPagedList(p, 10);
             ViewBag.about = am.TGetList().First();
             return View(values);
         }
@@ -76,6 +97,7 @@ namespace Blog.Controllers
         public IActionResult Single(int id)
         {
             var value = wm.TGetByID(id);
+            ViewBag.about = am.TGetList().First();
             return View(value);
         }
     }

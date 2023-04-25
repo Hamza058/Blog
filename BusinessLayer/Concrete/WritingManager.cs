@@ -11,36 +11,41 @@ namespace BusinessLayer.Concrete
 {
 	public class WritingManager : IWritingService
 	{
-		IWritingDal _writingDal;
+        IWritingDal _writingDal;
 
-		public WritingManager(IWritingDal writingDal)
-		{
-			_writingDal = writingDal;
-		}
+        public WritingManager(IWritingDal writingDal)
+        {
+            _writingDal = writingDal;
+        }
 
-		public void TAdd(Writing t)
-		{
-			_writingDal.Insert(t);
-		}
+        public void TAdd(Writing t)
+        {
+            _writingDal.Insert(t);
+        }
 
-		public void TDelete(Writing t)
-		{
-			_writingDal.Delete(t);
-		}
+        public void TDelete(Writing t)
+        {
+            _writingDal.Delete(t);
+        }
 
-		public Writing TGetByID(int id)
-		{
-			return _writingDal.Get(x => x.WritingId == id);
-		}
+        public void TDeleteSql(Writing t)
+        {
+            _writingDal.DeleteSql(t);
+        }
 
-		public List<Writing> TGetList()
-		{
-			return _writingDal.GetList();
-		}
+        public Writing TGetByID(int id)
+        {
+            return _writingDal.Get(x => x.WritingId == id);
+        }
 
-		public void TUpdate(Writing t)
-		{
-			_writingDal.Update(t);
-		}
-	}
+        public List<Writing> TGetList()
+        {
+            return _writingDal.GetList();
+        }
+
+        public void TUpdate(Writing t)
+        {
+            _writingDal.Update(t);
+        }
+    }
 }
